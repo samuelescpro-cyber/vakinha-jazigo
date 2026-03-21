@@ -40,62 +40,68 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 // Copiar Pix
-document.getElementById("copyPixBtn").addEventListener("click", () => {
-  const chave = document.getElementById("pixKey").innerText;
+const copyPixBtn = document.getElementById("copyPixBtn");
+const pixKey = document.getElementById("pixKey");
 
-  navigator.clipboard.writeText(chave).then(() => {
-    alert("Chave Pix copiada!");
+if (copyPixBtn && pixKey) {
+  copyPixBtn.addEventListener("click", () => {
+    const chave = pixKey.value;
+
+    navigator.clipboard.writeText(chave).then(() => {
+      alert("Chave Pix copiada!");
+    });
   });
-});
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Galeria (clique para ampliar)
+// Galeria
 const imagens = document.querySelectorAll(".gallery img");
 const lightbox = document.getElementById("lightbox");
-const lightboxImg = document.getElementById("lightboxImg");
-const closeBtn = document.getElementById("lightboxClose");
+const lightboxImg = document.getElementById("lightboxImage");
+const closeBtn = document.getElementById("closeLightboxBtn");
 
-imagens.forEach(img => {
+imagens.forEach((img) => {
   img.addEventListener("click", () => {
-    lightbox.style.display = "flex";
-    lightboxImg.src = img.src;
+    if (lightbox && lightboxImg) {
+      lightbox.style.display = "flex";
+      lightboxImg.src = img.src;
+    }
   });
 });
 
-closeBtn.addEventListener("click", () => {
-  lightbox.style.display = "none";
-});
-
-lightbox.addEventListener("click", (e) => {
-  if (e.target === lightbox) {
+if (closeBtn && lightbox) {
+  closeBtn.addEventListener("click", () => {
     lightbox.style.display = "none";
-  }
-});
+  });
+}
 
-// Inicializar
-atualizarBarra();
+if (lightbox) {
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) {
+      lightbox.style.display = "none";
+    }
+  });
+}
 
-window.addEventListener("load", () => {
-  document.body.classList.add("loaded");
-});
+// Música
+const musica = document.getElementById("musicaFamilia");
+
+if (musica) {
+  musica.volume = 0.5;
+
+  const iniciarMusica = async () => {
+    try {
+      await musica.play();
+      console.log("Música iniciada com sucesso.");
+
+      document.removeEventListener("click", iniciarMusica);
+      document.removeEventListener("touchstart", iniciarMusica);
+      document.removeEventListener("pointerdown", iniciarMusica);
+    } catch (erro) {
+      console.log("Ainda bloqueado. Tente outro clique na página.", erro);
+    }
+  };
+
+  document.addEventListener("click", iniciarMusica);
+  document.addEventListener("touchstart", iniciarMusica);
+  document.addEventListener("pointerdown", iniciarMusica);
+}
