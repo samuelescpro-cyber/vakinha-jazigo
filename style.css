@@ -484,7 +484,8 @@ small {
   .grid--2,
   .donate-grid,
   .video-card,
-  .hero__card {
+  .hero__card,
+  .pdf-grid {
     grid-template-columns: 1fr;
   }
 
@@ -525,4 +526,63 @@ small {
   color: #1c120a;
   border: 1px solid transparent;
   box-shadow: 0 8px 20px rgba(212, 163, 115, 0.3);
+}
+
+.pdf-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.pdf-card {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  backdrop-filter: blur(10px);
+  padding: 28px;
+}
+
+.pdf-card__tag {
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(212, 163, 115, 0.18);
+  color: #f4d7b8;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+
+.pdf-card--embed {
+  padding: 22px;
+}
+
+.pdf-embed-wrap {
+  margin-top: 18px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.pdf-embed {
+  display: block;
+  width: 100%;
+  height: 720px;
+  border: none;
+  background: #fff;
+}
+
+@media (max-width: 900px) {
+  .pdf-embed {
+    height: 620px;
+  }
+}
+
+@media (max-width: 600px) {
+  .pdf-embed {
+    height: 520px;
+  }
 }
