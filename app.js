@@ -31,7 +31,7 @@ function atualizarBarra() {
   }
 
   if (progressPercent) {
-    progressPercent.textContent = porcentagem.toFixed(0) + "%";
+    progressPercent.textContent = porcentagem.toFixed(1) + "%";
   }
 }
 
