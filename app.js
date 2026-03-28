@@ -10,6 +10,18 @@ function formatarMoeda(valor) {
   });
 }
 
+
+
+
+
+
+
+
+
+
+
+
+
 function atualizarBarra() {
   const porcentagem = Math.min((config.arrecadado / config.meta) * 100, 100);
 
@@ -31,9 +43,19 @@ function atualizarBarra() {
   }
 
   if (progressPercent) {
-    progressPercent.textContent = porcentagem.toFixed(1) + "%";
+    progressPercent.textContent = porcentagem.toFixed(1).replace(".", ",") + "%";
   }
 }
+
+
+
+
+
+
+
+
+
+
 
 document.addEventListener("DOMContentLoaded", () => {
   atualizarBarra();
