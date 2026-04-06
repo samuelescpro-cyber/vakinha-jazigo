@@ -1,6 +1,6 @@
 const config = {
   meta: 6500,
-  arrecadado: 650
+  arrecadado: 730
 };
 
 function formatarMoeda(valor) {
